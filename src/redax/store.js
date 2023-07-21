@@ -1,45 +1,17 @@
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 import { devToolsEnhancer } from "@redux-devtools/extension";
-
-const initualState = {
-    balalse: 0,
-}
+import accauntReducer from "./accauntSlice/AccauntSlice";
+import { localeReducer } from "./lengSlice/LengSlice"
 
 
-function rootReducer(state = initualState, action) {
+const rootReducer = combineReducers({
+accauntReducer,
+localeReducer,
+})
 
-    switch (action.type) {
-        case "accaunt/deposit":
-            return {
-                ...state,
-                balalse: state.balalse + action.pyload
-            }
-        case "accaunt/withdraw":
-              return {
-                ...state,
-                balalse: state.balalse - action.pyload
-            }
-            default: return state;
-    };
-   
-}
 const enhancer = devToolsEnhancer();
 
 export const store = createStore(rootReducer, enhancer);
 
 
- export function deposit (value) {
-    return {
-        type: "accaunt/deposit",
-        pyload: value,
-
-    }
-};
-
- export function Withdraw(value) {
-    return {
-        type: "accaunt/withdraw",
-        pyload: value,
-    }
-}
 
