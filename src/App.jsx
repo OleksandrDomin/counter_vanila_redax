@@ -4,7 +4,6 @@ import { Switcher } from "./compounents/lengSwitcher/LengSwitcher";
 
 function App() {
   const initLeng = useSelector(state => state.localeReducer.lang);
-
   return (
     <>
       <Switcher />
